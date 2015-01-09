@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<Link Rel="SHORTCUT ICON" href="images/logo.png">
+
+<title>特效下拉菜单</title>
+<style type="text/css">
+a, a:hover{ text-decoration:none;}
+#menu{ width:100%; height:50px; background-color:#00C; margin:10px auto 0px;}
+#menu a{ display:block; float:left; width:19.9%; line-height:50px; text-align:center; color:#FFF; font-size:24px; border-right:#006 1px solid;}
+#expandZone{ width:100%; height:0px; background-color:#96C; overflow:hidden; position:relative; top:0px;}
+.expDiv{ width:500%; height:230px;}/*500%是因为5张，每张100%*/
+.expList{ width:20%; text-align:center; float:left; line-height:210px; }
+.expList a{ color:white; font-size:30px;}
+#closeBtn{ width:120px; height:30px; background:url(images/broswer_home.png) no-repeat -13px -117px; position:absolute; left:50%; bottom:-15px; margin-left:-60px; cursor:pointer; }
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#menu').on('click','a',function(){
+		if($(this).hasClass("btn-active")){
+			//alert(1);
+			$('#closeBtn').click();
+			return false;		
+		}
+		var curIndex=$(this).index();
+		var mlValue="-"+curIndex*100+"%";
+		if($('#expandZone').hasClass("active")){
+		   $('#expandZone .expDiv').animate({marginLeft:mlValue});
+		}
+		else{
+			$('#expandZone .expDiv').css({marginLeft:mlValue});
+		    $('#expandZone').animate({height:"230px"}).addClass("active");
+			}
+          $(this).addClass('btn-active').siblings().removeClass('btn-active');
+			return false;
+		});
+	
+	$('#closeBtn').on('click',function(){
+		 $('#expandZone').animate({height:"0px"},function(){
+			 $(this).removeClass("active");
+			$("#menu .btn-active").removeClass("btn-active");
+			 });
+			 return false;
+		})
+	
+	})
+
+</script>
+</head>
+
+<body>
+<div id="menu" class="nav">
+<a href="#">首页</a>
+<a href="#">课程中心</a>
+<a href="#">人才培养</a>
+<a href="#">服务中心</a>
+<a href="#" id="last">荣誉</a>
+</div>
+
+<div id="expandZone" class="expand">
+<div class="expDiv">
+<div class="expList"><a href="#">XXXXX大学首页</a></div>
+<div class="expList"><a href="#">前端课程</a><a href="#">后端课程</a><a href="#">数据库</a></div>
+<div class="expList"><a href="#">高级架构师</a></div>
+<div class="expList"><a href="#">技术服务</a><a href="#">工作服务</a></div>
+<div class="expList"><a href="#">国家荣誉</a></div>
+</div>
+
+<div id="closeBtn" class="close-btn"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>中英文切换菜单</title>
+<Link Rel="SHORTCUT ICON" href="images/logo.png">
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+ul{ list-style:none;}
+a,a:hover{text-decoration:none;}
+#tmx_nav{width:600px; height:40px; background-color:#999; margin:0 auto;}
+.tmx_first_nav{ margin:0 auto; border-bottom:#C3F 5px solid; overflow:auto; }/*overflow:auto; 是为了清除ul本身的浮动，使其包含li里面的内容，要不然border-bottom不会显示在下面，而是在上面*/
+.tmx_first_nav li{  float:left; line-height:40px; text-align:center; position:relative;}
+.tmx_first_nav li a{ width:80px; display:block; color:#06F;  }
+.tmx_first_nav li a:hover{ background-color:#0C6; margin-top:-40px;  }/*为了让英文覆盖中文，所以就爱那个中文往上走了20px,从而不被显示*/
+.tmx_first_nav li a span{ display:none;}
+.tmx_first_nav li a:hover span{ display:block; background-color:#F96;};/*显示英文单词时的样式*/
+</style>
+</head>
+
+<body>
+<div id="tmx_nav">
+
+<ul class="tmx_first_nav">
+<li><a href="#">性别<span>Sex</span></a>
+</li>
+
+<li><a href="#">学院<span>College</span></a>
+</li>
+
+<li><a href="#">学历<span>Degree</span></a>
+</li>
+
+<li><a href="#">爱好<span>Interests</span></a>
+</li>
+
+<li><a href="#">IT技能<span>IT skills</span></a>
+</li>
+
+</ul>
+</div>
+</body>
+</html>

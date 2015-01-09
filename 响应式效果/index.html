@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<Link Rel="SHORTCUT ICON" href="images/logo.png">
+
+<title>响应式菜单</title>
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+ul{ list-style:none;}
+a{ text-decoration:none; }
+#toptitle{ display:none; margin:0 auto; text-align:center;  line-height:80px; }
+#toptitle a{ color:#000; font-size:40px;}
+#toptitle .rmenu{ display:none;}
+#toptitle .rmenu img{ width:50px; height:50px;}
+.menu{ width:800px; margin:0 auto;}
+.menu:before,.menu:after{ content:""; display:table;}
+.menu:after{ clear:both;} 
+.menu li{ display:block; float:left; line-height:80px; text-align:center; width:145px; margin:2px; background:#999; }
+.menu li a{ color:#C6C; font-size:20px;}
+#title{ width:200px; background-color:#FFF; }
+#title a{ color:#000; font-size:36px;}
+
+@media only screen and (min-width:600px) and (max-width:800px){
+	#title{ display:none;}
+	#toptitle{ display:block; width:100%; line-height:80px;} 
+	}
+@media only screen and (max-width:600px){
+	#title{ display:none;}
+	#toptitle{ display:block; width:100%;}
+	.menu{ width:100%; display:none;}
+	.menu li{ width:100%; margin:3px 0px;} 
+	#toptitle .rmenu{ display:block; text-align:right }
+}
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$('#rlist').on('click',function(){
+		alert(1);
+		if($('.menu').hasClass('active')){
+           $('.menu').css('display','none').removeClass('active');
+
+		}
+		else{
+			$('.menu').css('display','block').addClass('active');
+			}		})
+	
+	})
+</script>
+</head>
+
+<body>
+<div id="toptitle">
+<a href="#">响应式菜单</a>
+<a href="#" class="rmenu" id="rlist"><img src="images/logo.png"/></a>
+</div>
+<ul class="menu">
+<li><a href="#">特效菜单</a></li>
+<li><a href="#">纯CSS菜单</a></li>
+<li id="title"><a href="#">响应式菜单</a></li>
+<li><a href="#">jQuery菜单</a></li>
+<li><a href="#">js菜单</a></li>
+</ul>
+</body>
+</html>

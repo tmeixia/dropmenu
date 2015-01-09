@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>下拉菜单-用JS实现</title>
+<Link Rel="SHORTCUT ICON" href="images/logo.png">
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+ul{ list-style:none;}
+a,a:hover{text-decoration:none;}
+#tmx_nav{width:600px; height:31px; background-color:#999; margin:0 auto;}
+.tmx_first_nav{ margin:0 auto; }
+.tmx_first_nav li{ float:left; line-height:31px; text-align:center; position:relative;}
+.tmx_first_nav li a{ width:80px; display:block; color:#06F; padding:0 20px;  font-size:20px;}
+.note{ background:url(images/slide-pannel_14.png) repeat-x; }
+.tmx_first_nav li a:hover{ background:url(images/slide-pannel_14.png) repeat-x; }
+.tmx_sec_nav{ position:absolute; left:0px; top:31px;height:0; overflow:hidden;}
+.tmx_sec_nav li{ float:none; line-height:30px; text-align:left; background-color:#99c; }
+.tmx_sec_nav li a{ width:80px; font-size:16px; color:#000; }
+.tmx_thr_nav{ position:absolute; left:120px; top:0px; display:none; }
+.tmx_thr_nav li{ float:none; line-height:30px; text-align:left; background-color:#C9F;}
+.corner{ display:block; height:11px; background:url(images/bird.png) no-repeat 51px 0px;}/*三角形的样式*/
+</style>
+<script type="text/javascript">
+
+	window.onload=function(){
+		var Lis=document.getElementsByTagName('li');
+		for(var i=0; i<Lis.length; i++){
+			Lis[i].onmouseover=function(){
+				var Ul=this.getElementsByTagName('ul')[0];
+				//alert(6);
+				if(Ul != undefined){
+					Ul.style.display='block';
+					//AddH(Ul.id);
+					ChangeH(Ul.id,1);
+				}
+				}
+		Lis[i].onmouseout=function(){
+				var Ul=this.getElementsByTagName('ul')[0];
+				if(Ul != undefined){
+					Ul.style.display='block';
+					//SubH(Ul.id);
+					ChangeH(Ul.id,-1);
+				}
+				}		
+				
+				
+			}
+		
+		}
+		function ChangeH(id,count){
+			var UlList=document.getElementById(id);
+			var LiList=UlList.getElementsByTagName('li');
+			var h=UlList.offsetHeight;
+			if(count>0){
+				h+=5;
+			    if(h<=30*LiList.length){
+				 UlList.style.height=h+'px';
+				 setTimeout("ChangeH('"+id+"',1)",10);
+				}
+			    else{return;}
+				}
+			else{
+				h-=5;
+			   if(h>=0){
+				 UlList.style.height=h+'px';
+				 setTimeout("ChangeH('"+id+"',-1)",10);
+				}
+			    else{return;}
+			
+				}
+			
+			
+			}
+		
+	/*	function AddH(id){
+			var UlList=document.getElementById(id);
+			var LiList=UlList.getElementsByTagName('li');
+			var h=UlList.offsetHeight;
+			h+=5;
+			if(h<=30*LiList.length){
+				 UlList.style.height=h+'px';
+				 setTimeout("AddH('"+id+"')",10);
+				}
+			else{return;}
+			}
+		function SubH(id){
+			var UlList=document.getElementById(id);
+			var LiList=UlList.getElementsByTagName('li');
+			var h=UlList.offsetHeight;
+			h-=5;
+			if(h>=0){
+				 UlList.style.height=h+'px';
+				 setTimeout("SubH('"+id+"')",10);
+				}
+			else{return;}
+			
+			
+			}
+*/
+
+</script>
+</head>
+
+<body>
+<div id="tmx_nav">
+
+<ul class="tmx_first_nav">
+<li class="tmx_first_li note"><a href="#">性别</a>
+<ul class="tmx_sec_nav" id="sex">
+<span class="corner"></span><!--为了加那个三角形!-->
+<li><a href="#">男</a>
+<ul class="tmx_thr_nav">
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+</ul>
+</li>
+<li><a href="#">女</a></li>
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">学院</a>
+<ul class="tmx_sec_nav" id="college">
+<span class="corner"></span><!--为了加那个三角形!-->
+
+<li><a href="#">计算机学院</a>
+
+<ul class="tmx_thr_nav">
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+</ul></li>
+<li><a href="#">自动化学院</a></li>
+<li><a href="#">软件工程学院</a></li>
+<li><a href="#">土木学院</a></li>
+<li><a href="#">通信学院</a></li>
+</ul>
+</li>
+
+<li class="tmx_first_li" ><a href="#">学历</a>
+<ul class="tmx_sec_nav" id="degree">
+<span class="corner"></span><!--为了加那个三角形!-->
+
+<li><a href="#">本科</a>
+<ul class="tmx_thr_nav">
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+</ul>
+</li>
+<li><a href="#">硕士</a></li>
+<li><a href="#">博士</a></li>
+<li><a href="#">博士后</a></li>
+</ul>
+</li>
+
+<li class="tmx_first_li" ><a href="#">兴趣爱好</a>
+<ul class="tmx_sec_nav" id="inter">
+<span class="corner"></span><!--为了加那个三角形!-->
+
+<li><a href="#">羽毛球</a></li>
+<li><a href="#">乒乓球</a></li>
+<li><a href="#">足球</a></li>
+<li><a href="#">篮球</a></li>
+
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">IT技能</a>
+<ul class="tmx_sec_nav" id="skill">
+<span class="corner"></span><!--为了加那个三角形!-->
+
+<li><a href="#">HTML</a></li>
+<li><a href="#">CSS</a></li>
+<li><a href="#">JS</a></li>
+<li><a href="#">JAVA</a></li>
+<li><a href="#">PHP</a></li>
+
+</ul>
+</li>
+
+</ul>
+</div>
+</body>
+</html>

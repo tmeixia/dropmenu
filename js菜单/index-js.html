@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>下拉菜单-用JS实现</title>
+<Link Rel="SHORTCUT ICON" href="images/logo.png">
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+ul{ list-style:none;}
+a,a:hover{text-decoration:none;}
+#tmx_nav{width:600px; height:40px; background-color:#999; margin:0 auto;}
+.tmx_first_nav{ margin:0 auto; }
+.tmx_first_nav li{ float:left; line-height:40px; text-align:center; position:relative;}
+.tmx_first_nav li a{ width:80px; display:block; color:#06F; padding:0 20px;  font-size:20px;}
+.tmx_first_nav li a:hover{ background-color:#0C6; }
+.tmx_sec_nav{ position:absolute; left:0px; top:40px; display:none;}
+.tmx_sec_nav li{ float:none; line-height:30px; text-align:left; background-color:#99c; }
+.tmx_sec_nav li a{ width:80px; font-size:16px; color:#000; }
+.tmx_thr_nav{ position:absolute; left:120px; top:0px; display:none; }
+.tmx_thr_nav li{ float:none; line-height:30px; text-align:left; background-color:#C9F;}
+
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+	/*方法一*/
+	/*var FirLi=getClass('li','tmx_first_li');
+	for(var i=0; i<FirLi.length; i++){
+		FirLi[i].onmouseover=function(){
+	   var SecUl=this.getElementsByTagName('ul')[0];
+	   SecUl.style.display="block";
+		}
+		FirLi[i].onmouseout=function(){
+	   var SecUl=this.getElementsByTagName('ul')[0];
+	   SecUl.style.display="none";
+		}
+	}
+	*/
+	/*方法二：更好的方法，不需要给li写类名*/
+	var FirLi=document.getElementsByTagName('li');
+	for(var i=0; i<FirLi.length; i++){
+		FirLi[i].onmouseover=function(){
+	   var SecUl=this.getElementsByTagName('ul')[0];
+	   if(SecUl !=undefined){                  //一定要判断。因为如果SecUl为空的话，那么就会报错
+	   SecUl.style.display="block";
+	   }
+		}
+		FirLi[i].onmouseout=function(){
+	   var SecUl=this.getElementsByTagName('ul')[0];
+	   if(SecUl !=undefined){
+	   SecUl.style.display="none";
+	   }
+		}
+	}
+	};
+	//通过class得到元素，配合方法一使用的，方法二不需要
+	/*function getClass(tagName,className) //获得标签名为tagName,类名className的元素
+   {
+    if(document.getElementsByClassName) //支持这个函数
+    {        return document.getElementsByClassName(className);
+    }
+    else
+    {       var tags=document.getElementsByTagName(tagName);//获取标签
+        var tagArr=[];//用于返回类名为className的元素
+        for(var i=0;i < tags.length; i++)
+        {
+            if(tags[i].class == className)
+            {
+                tagArr[tagArr.length] = tags[i];//保存满足条件的元素
+            }
+        }
+        return tagArr;
+    }
+
+}
+*/
+/*方法三：用jquery方法来实现*/
+/*	$(function(){
+		$('li').has('ul').mouseover(function(){
+			$(this).children('ul').css('display','block');
+			}).mouseout(function(){
+				$(this).children('ul').css('display','none');
+				});
+		
+		});
+	*/
+</script>
+</head>
+
+<body>
+<div id="tmx_nav">
+
+<ul class="tmx_first_nav">
+<li class="tmx_first_li"><a href="#">性别</a>
+<ul class="tmx_sec_nav">
+<li><a href="#">男</a>
+<ul class="tmx_thr_nav">
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+</ul>
+</li>
+<li><a href="#">女</a></li>
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">学院</a>
+<ul class="tmx_sec_nav">
+<li><a href="#">计算机学院</a>
+
+<ul class="tmx_thr_nav">
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+</ul></li>
+<li><a href="#">自动化学院</a></li>
+<li><a href="#">软件工程学院</a></li>
+<li><a href="#">土木学院</a></li>
+<li><a href="#">通信学院</a></li>
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">学历</a>
+<ul class="tmx_sec_nav">
+<li><a href="#">本科</a>
+<ul class="tmx_thr_nav">
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+</ul>
+</li>
+<li><a href="#">硕士</a></li>
+<li><a href="#">博士</a></li>
+<li><a href="#">博士后</a></li>
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">兴趣爱好</a>
+<ul class="tmx_sec_nav">
+<li><a href="#">羽毛球</a></li>
+<li><a href="#">乒乓球</a></li>
+<li><a href="#">足球</a></li>
+<li><a href="#">篮球</a></li>
+
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">IT技能</a>
+<ul class="tmx_sec_nav">
+<li><a href="#">HTML</a></li>
+<li><a href="#">CSS</a></li>
+<li><a href="#">JS</a></li>
+<li><a href="#">JAVA</a></li>
+<li><a href="#">PHP</a></li>
+
+</ul>
+</li>
+
+</ul>
+</div>
+</body>
+</html>

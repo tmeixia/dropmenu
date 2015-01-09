@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>下拉菜单-用JS实现</title>
+<Link Rel="SHORTCUT ICON" href="images/logo.png">
+<style type="text/css">
+*{ margin:0px; padding:0px;}
+ul{ list-style:none;}
+a,a:hover{text-decoration:none;}
+.tmx_first_nav{
+	width:610px; 
+	background-color:#963; 
+	background-image:linear-gradient(#961，#963); 
+	margin:0 auto;
+	border:#962 2px solid;
+    border-radius:10px; 
+    box-shadow:0px 1px 1px #03C;
+	}
+.tmx_first_nav:before,.tmx_first_nav:after
+ {
+	 content:" ";
+	 display:table;
+	 
+	}
+	.tmx_first_nav:after
+	{
+		clear:both;
+		}
+.tmx_first_nav > li{ 
+float:left; 
+line-height:31px; 
+text-align:center; 
+border-right:1px solid #633; 
+box-shadow:1px 0 0 #961; 
+position:relative;
+}
+.tmx_first_nav li a{ 
+width:80px; 
+display:block; 
+color:#7a3; 
+padding:0 20px;  
+font-size:20px; 
+text-shadow:0 1px 0 #7a3;
+
+
+}
+.note>a{ 
+background:#96a 
+}
+.tmx_first_nav li a:hover{ 
+background:#96a; 
+color:#3F6;
+}
+.tmx_sec_nav{ 
+position:absolute; 
+left:0px; 
+top:13px; 
+z-index:1; 
+border-radius:5px;  
+background-color:#99c; 
+background-image:linear-gradient(#99e,#99c);
+/*box-shadow:0 -1 0 rgba(255,255,255,.3);*/ 
+margin:20px 0 0 0; 
+opacity:0;  
+filter:alpha(opacity=0); 
+transition:all .2s ease-in-out; 
+display:none;
+}
+.tmx_first_nav li:hover > ul{
+	opacity:1; 
+	filter:alpha(opacity=1);
+	}
+.tmx_sec_nav li{ 
+float:none; 
+display:block;
+border:0px;
+box-shadow:0 1px #111,0 2px #666;
+line-height:30px; 
+text-align:left; 
+}
+.tmx_sec_nav li a{ 
+width:80px; 
+font-size:16px; 
+color:#000; 
+display:block;
+}
+.tmx_sec_nav li a:hover{ 
+background-color:#0186ba;
+background-image:linear-gradient(#04acec,#0186ba);
+}
+.tmx_sec_nav li:first-child > a{
+	border-radius:5px 5px 0 0;
+	}
+.tmx_sec_nav li:last-child > a{
+	border-radius:5px 5px 0 0;
+	}
+.tmx_sec_nav li:first-child > a:before{
+	content:"";
+	position:absolute;
+	left:50px;
+	top:-10px;
+	border-left:10px solid transparent;
+	border-right:10px solid transparent;
+	border-bottom:10px solid #99c;
+	}	
+	.tmx_sec_nav li:first-child > a:hover:before{
+	border-bottom-color:#0186ba;
+	}	
+.tmx_first_nav li:hover ul{
+	 display:block;
+	 }
+.tmx_thr_nav{ 
+left:150px; 
+top:0px; 
+margin:0 0 0 20px;
+}
+.tmx_thr_nav li{ 
+float:none; 
+line-height:30px; 
+text-align:left; 
+background-color:#C9F;
+}
+.tmx_thr_nav li:first-child a:before
+{
+	left:-6px;
+	top:50%;
+	margin-top:-6px;
+	border-bottom:6px solid transparent;
+	border-top:6px solid transparent;
+	border-right:6px solid #99c;
+	
+	}
+	.tmx_thr_nav li:first-child a:hover:before
+{
+	
+	border-right-color:#0186ba;
+	border-bottom-color:transparent;
+	
+	}
+.tmx_first_nav li:hover ul li ul{ display:none;}
+.tmx_first_nav li ul li:hover ul{ display:block;}
+</style>
+</head>
+
+<body>
+<div id="tmx_nav">
+
+<ul class="tmx_first_nav">
+<li class="tmx_first_li note"><a href="#">性别</a>
+<ul class="tmx_sec_nav">
+<li><a href="#">男</a>
+<ul class="tmx_thr_nav">
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+</ul>
+</li>
+<li><a href="#">女</a></li>
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">学院</a>
+<ul class="tmx_sec_nav">
+
+
+<li><a href="#">计算机学院</a>
+<ul class="tmx_thr_nav">
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+</ul></li>
+<li><a href="#">自动化学院</a></li>
+<li><a href="#">软件工程</a></li>
+<li><a href="#">土木学院</a></li>
+<li><a href="#">通信学院</a></li>
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">学历</a>
+<ul class="tmx_sec_nav">
+
+<li><a href="#">本科</a>
+<ul class="tmx_thr_nav">
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+<li><a href="#">XXXXX</a></li>
+</ul>
+</li>
+<li><a href="#">硕士</a></li>
+<li><a href="#">博士</a></li>
+<li><a href="#">博士后</a></li>
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">兴趣爱好</a>
+<ul class="tmx_sec_nav">
+
+<li><a href="#">羽毛球</a></li>
+<li><a href="#">乒乓球</a></li>
+<li><a href="#">足球</a></li>
+<li><a href="#">篮球</a></li>
+
+</ul>
+</li>
+
+<li class="tmx_first_li"><a href="#">IT技能</a>
+<ul class="tmx_sec_nav">
+
+<li><a href="#">HTML</a></li>
+<li><a href="#">CSS</a></li>
+<li><a href="#">JS</a></li>
+<li><a href="#">JAVA</a></li>
+<li><a href="#">PHP</a></li>
+
+</ul>
+</li>
+
+</ul>
+</div>
+</body>
+</html>
